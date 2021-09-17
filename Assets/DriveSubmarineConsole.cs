@@ -6,6 +6,8 @@ public class DriveSubmarineConsole : MonoBehaviour
 {
     private bool currentlyDriving;
 
+    public float speed;
+
     public GameObject player;
     public GameObject submarine;
 
@@ -30,14 +32,49 @@ public class DriveSubmarineConsole : MonoBehaviour
                     Debug.Log("You clicked the drive sub button!");
                     player.GetComponent<Player>().FreezePlayer();
                     currentlyDriving = true;
+                    Camera._instance.ChangeCameraMode(Camera.CameraMode.drivingMode);
                 }
                 else
                 {
                     Debug.Log("Not driving submarine anymore");
                     player.GetComponent<Player>().UnFreezePlayer();
                     currentlyDriving = false;
+                    Camera._instance.ChangeCameraMode(Camera.CameraMode.playerMode);
                 }
             }
+        }
+    }
+
+    private void FixedUpdate()
+    {
+        if (currentlyDriving) {
+
+            var rb = submarine.GetComponent<Rigidbody>();
+
+            if (Input.GetKey(KeyCode.W))
+            {
+                rb.AddForce(transform.forward * speed);
+            }
+            else if (Input.GetKey(KeyCode.S))
+            {
+                rb.AddForce(-transform.forward * speed);
+            }
+            if (Input.GetKey(KeyCode.A))
+            {
+                rb.AddTorque(-transform.up * speed);
+            }
+            else if (Input.GetKey(KeyCode.D))
+            {
+                rb.AddTorque(transform.up * speed);
+            }
+            if (Input.GetKey(KeyCode.Q)) {
+                rb.AddForce(transform.up * speed);
+            }
+            else if (Input.GetKey(KeyCode.Z))
+            {
+                rb.AddForce(-transform.up * speed);
+            }
+
         }
     }
 }
