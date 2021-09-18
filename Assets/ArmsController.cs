@@ -36,17 +36,18 @@ public class ArmsController : MonoBehaviour
         {
             var distToPlayer = Vector3.Distance(player.transform.localPosition, gameObject.transform.localPosition);
 
-            if (distToPlayer < activationDistance && player.GetPlayerState() == Player.PlayerState.walkingMode)
+            if (distToPlayer < activationDistance && GameManager._instance.currentGameState == GameManager.GameState.walkingState)
             {
-                Debug.Log("ControllingMode activated!");
+                Debug.Log("Controlling Mode activated!");
                 player.FreezePlayer();
-                player.SetPlayerState(Player.PlayerState.controllingMode);
+                GameManager._instance.currentGameState = GameManager.GameState.controllingState;
                 camera.GetComponent<Camera>().ChangeCameraMode(Camera.CameraMode.controllingMode);
             }
-            else
+            else if (GameManager._instance.currentGameState == GameManager.GameState.controllingState)
             {
+                Debug.Log("Walking Mode activated!");
                 player.UnFreezePlayer();
-                player.SetPlayerState(Player.PlayerState.walkingMode);
+                GameManager._instance.currentGameState = GameManager.GameState.walkingState;
                 camera.GetComponent<Camera>().ChangeCameraMode(Camera.CameraMode.playerMode);
             }
         }

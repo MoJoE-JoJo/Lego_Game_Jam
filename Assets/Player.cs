@@ -5,13 +5,8 @@ using LEGOMinifig;
 
 public class Player : MonoBehaviour
 {
-    public enum PlayerState {
-        walkingMode, drivingMode, controllingMode
-    }
 
     private bool playerFrozen;
-
-    public static PlayerState currentState;
 
     public MinifigController minifigController;
 
@@ -40,14 +35,5 @@ public class Player : MonoBehaviour
     {
         minifigController.SetInputEnabled(true);
         playerFrozen = false;
-    }
-
-    public void SetPlayerState(PlayerState state)
-    {
-        currentState = state;
-    }
-
-    public PlayerState GetPlayerState() {
-        return currentState;
     }
 }

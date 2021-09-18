@@ -24,7 +24,6 @@ public class DriveSubmarineConsole : MonoBehaviour
 
         if (Input.GetKeyUp(KeyCode.E))
         {
-            Debug.Log("Current player mode: " + player.GetPlayerState());
             Debug.Log("Current game state: " + GameManager._instance.currentGameState);
 
             var distToPlayer = Vector3.Distance(player.transform.localPosition, gameObject.transform.localPosition);
@@ -33,7 +32,6 @@ public class DriveSubmarineConsole : MonoBehaviour
             {
                 Debug.Log("Driving mode activated!");
                 player.FreezePlayer();
-                //player.SetPlayerState(Player.PlayerState.drivingMode);
                 GameManager._instance.currentGameState = GameManager.GameState.drivingState;
                 camera.GetComponent<Camera>().ChangeCameraMode(Camera.CameraMode.drivingMode);
             }
@@ -41,7 +39,6 @@ public class DriveSubmarineConsole : MonoBehaviour
             {
                 Debug.Log("Walking mode activated!");
                 player.UnFreezePlayer();
-                //player.SetPlayerState(Player.PlayerState.walkingMode);
                 GameManager._instance.currentGameState = GameManager.GameState.walkingState;
                 camera.GetComponent<Camera>().ChangeCameraMode(Camera.CameraMode.playerMode);
             }
