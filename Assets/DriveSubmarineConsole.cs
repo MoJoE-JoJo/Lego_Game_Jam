@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class DriveSubmarineConsole : MonoBehaviour
 {
+    public float fuelUsage;
     public float speed;
     public float activationDistance;
 
@@ -16,7 +17,7 @@ public class DriveSubmarineConsole : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        legoController = GameObject.FindGameObjectWithTag("LegoController").GetComponent<LegoController>();
     }
 
     // Update is called once per frame
@@ -52,13 +53,23 @@ public class DriveSubmarineConsole : MonoBehaviour
     {
         if (GameManager._instance.currentGameState == GameManager.GameState.drivingState)
         {
+            var rightLeverVal = legoController.GetRightLeverValue();
+            var leftLeverVal = legoController.GetLeftLeverValue();
+            var steeringVal = legoController.GetSteeringWheelValue();
+
+            if (rightLeverVal != 0 || leftLeverVal != 0 || steeringVal != 0)
+            {
+                var val = Mathf.Abs(rightLeverVal) + Mathf.Abs(leftLeverVal) + Mathf.Abs(steeringVal);
+                val /= 10;
+                GameManager._instance.SpendFuel(fuelUsage*Time.fixedDeltaTime*val);
+            }
             Debug.Log(legoController.GetRightLeverValue());
             Debug.Log(legoController.GetSteeringWheelValue());
             Debug.Log(legoController.GetLeftLeverValue());
             legoController.gameMode = GAMEMODES.SUBMARINE;
-            submarine.AddForce(transform.forward * speed * legoController.GetRightLeverValue());
-            submarine.AddTorque(transform.up * speed * legoController.GetSteeringWheelValue());
-            submarine.AddForce(transform.up * speed * legoController.GetLeftLeverValue());
+            submarine.AddForce(transform.forward * speed * rightLeverVal);
+            submarine.AddTorque(transform.up * speed * steeringVal);
+            submarine.AddForce(transform.up * speed * leftLeverVal);
         }
     }
 }

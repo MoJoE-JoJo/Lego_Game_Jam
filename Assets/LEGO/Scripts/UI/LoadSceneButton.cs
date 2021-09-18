@@ -1,4 +1,4 @@
-﻿using Unity.LEGO.Game;
+using Unity.LEGO.Game;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 

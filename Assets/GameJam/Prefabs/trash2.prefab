@@ -96,7 +96,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   part: {fileID: 4895879776888989880}
   connectionIndex: 10
-  field: {fileID: 3854941389443740547}
+  field: {fileID: 0}
 --- !u!1 &361325429115167058
 GameObject:
   m_ObjectHideFlags: 0
@@ -193,7 +193,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   part: {fileID: 4895879776888989880}
   connections: 0c0000000e0000001e00000020000000
-  field: {fileID: 3016118797037672686}
+  field: {fileID: 0}
 --- !u!1 &1096414966684780768
 GameObject:
   m_ObjectHideFlags: 0
@@ -290,544 +290,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   part: {fileID: 4895879776888989880}
   connectionIndex: 12
-  field: {fileID: 3854941389443740547}
---- !u!1 &1926431228595535764
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 6950159794456650247}
-  - component: {fileID: 755295351622556826}
-  m_Layer: 0
-  m_Name: Connectivity
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &6950159794456650247
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1926431228595535764}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 5840390048632647417}
-  - {fileID: 876546754736096874}
-  m_Father: {fileID: 9141429773855950564}
-  m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &755295351622556826
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1926431228595535764}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 316db6ea160d582478cdebd1dad5eeac, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  version: 4
-  part: {fileID: 4895879776888989880}
-  extents:
-    m_Center: {x: -1.2, y: 0.569005, z: -0.40000004}
-    m_Extent: {x: -1.6, y: 0.569005, z: 0.8}
-  planarFields:
-  - {fileID: 3016118797037672686}
-  - {fileID: 3854941389443740547}
-  axleFields: []
-  fixedFields: []
---- !u!1 &2492642731204948308
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 5840390048632647417}
-  - component: {fileID: 3016118797037672686}
-  - component: {fileID: 6999890497780183017}
-  m_Layer: 12
-  m_Name: Custom2DField
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &5840390048632647417
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2492642731204948308}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.4, y: 0, z: -1.2}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 6950159794456650247}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3016118797037672686
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2492642731204948308}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 288372c759dd2a945b8f29e181c3b0aa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  connectivity: {fileID: 755295351622556826}
-  kind: 1
-  connections:
-  - field: {fileID: 3016118797037672686}
-    connectionType: 22
-    quadrants: 1
-    index: 0
-    flags: 1
-    knob: {fileID: 0}
-    tubes: []
-  - field: {fileID: 3016118797037672686}
-    connectionType: 22
-    quadrants: 2
-    index: 1
-    flags: 1
-    knob: {fileID: 0}
-    tubes: []
-  - field: {fileID: 3016118797037672686}
-    connectionType: 22
-    quadrants: 2
-    index: 2
-    flags: 1
-    knob: {fileID: 0}
-    tubes: []
-  - field: {fileID: 3016118797037672686}
-    connectionType: 22
-    quadrants: 2
-    index: 3
-    flags: 1
-    knob: {fileID: 0}
-    tubes: []
-  - field: {fileID: 3016118797037672686}
-    connectionType: 22
-    quadrants: 2
-    index: 4
-    flags: 1
-    knob: {fileID: 0}
-    tubes: []
-  - field: {fileID: 3016118797037672686}
-    connectionType: 22
-    quadrants: 2
-    index: 5
-    flags: 1
-    knob: {fileID: 0}
-    tubes: []
-  - field: {fileID: 3016118797037672686}
-    connectionType: 22
-    quadrants: 2
-    index: 6
-    flags: 1
-    knob: {fileID: 0}
-    tubes: []
-  - field: {fileID: 3016118797037672686}
-    connectionType: 22
-    quadrants: 2
-    index: 7
-    flags: 1
-    knob: {fileID: 0}
-    tubes: []
-  - field: {fileID: 3016118797037672686}
-    connectionType: 22
-    quadrants: 1
-    index: 8
-    flags: 1
-    knob: {fileID: 0}
-    tubes: []
-  - field: {fileID: 3016118797037672686}
-    connectionType: 22
-    quadrants: 2
-    index: 9
-    flags: 1
-    knob: {fileID: 0}
-    tubes: []
-  - field: {fileID: 3016118797037672686}
-    connectionType: 15
-    quadrants: 4
-    index: 10
-    flags: 1
-    knob: {fileID: 0}
-    tubes:
-    - {fileID: 3505905189114016586}
-  - field: {fileID: 3016118797037672686}
-    connectionType: 23
-    quadrants: 4
-    index: 11
-    flags: 1
-    knob: {fileID: 0}
-    tubes: []
-  - field: {fileID: 3016118797037672686}
-    connectionType: 15
-    quadrants: 4
-    index: 12
-    flags: 1
-    knob: {fileID: 0}
-    tubes:
-    - {fileID: 7672426388293518073}
-    - {fileID: 3505905189114016586}
-  - field: {fileID: 3016118797037672686}
-    connectionType: 23
-    quadrants: 4
-    index: 13
-    flags: 1
-    knob: {fileID: 0}
-    tubes: []
-  - field: {fileID: 3016118797037672686}
-    connectionType: 15
-    quadrants: 4
-    index: 14
-    flags: 1
-    knob: {fileID: 0}
-    tubes:
-    - {fileID: 7672426388293518073}
-    - {fileID: 8358838996440611050}
-  - field: {fileID: 3016118797037672686}
-    connectionType: 23
-    quadrants: 4
-    index: 15
-    flags: 1
-    knob: {fileID: 0}
-    tubes: []
-  - field: {fileID: 3016118797037672686}
-    connectionType: 15
-    quadrants: 4
-    index: 16
-    flags: 1
-    knob: {fileID: 0}
-    tubes:
-    - {fileID: 8358838996440611050}
-  - field: {fileID: 3016118797037672686}
-    connectionType: 22
-    quadrants: 2
-    index: 17
-    flags: 1
-    knob: {fileID: 0}
-    tubes: []
-  - field: {fileID: 3016118797037672686}
-    connectionType: 22
-    quadrants: 2
-    index: 18
-    flags: 1
-    knob: {fileID: 0}
-    tubes: []
-  - field: {fileID: 3016118797037672686}
-    connectionType: 23
-    quadrants: 4
-    index: 19
-    flags: 1
-    knob: {fileID: 0}
-    tubes: []
-  - field: {fileID: 3016118797037672686}
-    connectionType: 7
-    quadrants: 4
-    index: 20
-    flags: 2
-    knob: {fileID: 0}
-    tubes: []
-  - field: {fileID: 3016118797037672686}
-    connectionType: 23
-    quadrants: 4
-    index: 21
-    flags: 1
-    knob: {fileID: 0}
-    tubes: []
-  - field: {fileID: 3016118797037672686}
-    connectionType: 7
-    quadrants: 4
-    index: 22
-    flags: 2
-    knob: {fileID: 0}
-    tubes: []
-  - field: {fileID: 3016118797037672686}
-    connectionType: 23
-    quadrants: 4
-    index: 23
-    flags: 1
-    knob: {fileID: 0}
-    tubes: []
-  - field: {fileID: 3016118797037672686}
-    connectionType: 7
-    quadrants: 4
-    index: 24
-    flags: 2
-    knob: {fileID: 0}
-    tubes: []
-  - field: {fileID: 3016118797037672686}
-    connectionType: 23
-    quadrants: 4
-    index: 25
-    flags: 1
-    knob: {fileID: 0}
-    tubes: []
-  - field: {fileID: 3016118797037672686}
-    connectionType: 22
-    quadrants: 2
-    index: 26
-    flags: 1
-    knob: {fileID: 0}
-    tubes: []
-  - field: {fileID: 3016118797037672686}
-    connectionType: 22
-    quadrants: 2
-    index: 27
-    flags: 1
-    knob: {fileID: 0}
-    tubes: []
-  - field: {fileID: 3016118797037672686}
-    connectionType: 15
-    quadrants: 4
-    index: 28
-    flags: 1
-    knob: {fileID: 0}
-    tubes:
-    - {fileID: 3505905189114016586}
-  - field: {fileID: 3016118797037672686}
-    connectionType: 23
-    quadrants: 4
-    index: 29
-    flags: 1
-    knob: {fileID: 0}
-    tubes: []
-  - field: {fileID: 3016118797037672686}
-    connectionType: 15
-    quadrants: 4
-    index: 30
-    flags: 1
-    knob: {fileID: 0}
-    tubes:
-    - {fileID: 7672426388293518073}
-    - {fileID: 3505905189114016586}
-  - field: {fileID: 3016118797037672686}
-    connectionType: 23
-    quadrants: 4
-    index: 31
-    flags: 1
-    knob: {fileID: 0}
-    tubes: []
-  - field: {fileID: 3016118797037672686}
-    connectionType: 15
-    quadrants: 4
-    index: 32
-    flags: 1
-    knob: {fileID: 0}
-    tubes:
-    - {fileID: 7672426388293518073}
-    - {fileID: 8358838996440611050}
-  - field: {fileID: 3016118797037672686}
-    connectionType: 23
-    quadrants: 4
-    index: 33
-    flags: 1
-    knob: {fileID: 0}
-    tubes: []
-  - field: {fileID: 3016118797037672686}
-    connectionType: 15
-    quadrants: 4
-    index: 34
-    flags: 1
-    knob: {fileID: 0}
-    tubes:
-    - {fileID: 8358838996440611050}
-  - field: {fileID: 3016118797037672686}
-    connectionType: 22
-    quadrants: 2
-    index: 35
-    flags: 1
-    knob: {fileID: 0}
-    tubes: []
-  - field: {fileID: 3016118797037672686}
-    connectionType: 22
-    quadrants: 1
-    index: 36
-    flags: 1
-    knob: {fileID: 0}
-    tubes: []
-  - field: {fileID: 3016118797037672686}
-    connectionType: 22
-    quadrants: 2
-    index: 37
-    flags: 1
-    knob: {fileID: 0}
-    tubes: []
-  - field: {fileID: 3016118797037672686}
-    connectionType: 22
-    quadrants: 2
-    index: 38
-    flags: 1
-    knob: {fileID: 0}
-    tubes: []
-  - field: {fileID: 3016118797037672686}
-    connectionType: 22
-    quadrants: 2
-    index: 39
-    flags: 1
-    knob: {fileID: 0}
-    tubes: []
-  - field: {fileID: 3016118797037672686}
-    connectionType: 22
-    quadrants: 2
-    index: 40
-    flags: 1
-    knob: {fileID: 0}
-    tubes: []
-  - field: {fileID: 3016118797037672686}
-    connectionType: 22
-    quadrants: 2
-    index: 41
-    flags: 1
-    knob: {fileID: 0}
-    tubes: []
-  - field: {fileID: 3016118797037672686}
-    connectionType: 22
-    quadrants: 2
-    index: 42
-    flags: 1
-    knob: {fileID: 0}
-    tubes: []
-  - field: {fileID: 3016118797037672686}
-    connectionType: 22
-    quadrants: 2
-    index: 43
-    flags: 1
-    knob: {fileID: 0}
-    tubes: []
-  - field: {fileID: 3016118797037672686}
-    connectionType: 22
-    quadrants: 1
-    index: 44
-    flags: 1
-    knob: {fileID: 0}
-    tubes: []
-  connected: 
-  connectableConnections: 45
-  connectedTo:
-  - field: {fileID: 0}
-    indexOfConnection: 0
-  - field: {fileID: 0}
-    indexOfConnection: 0
-  - field: {fileID: 0}
-    indexOfConnection: 0
-  - field: {fileID: 0}
-    indexOfConnection: 0
-  - field: {fileID: 0}
-    indexOfConnection: 0
-  - field: {fileID: 0}
-    indexOfConnection: 0
-  - field: {fileID: 0}
-    indexOfConnection: 0
-  - field: {fileID: 0}
-    indexOfConnection: 0
-  - field: {fileID: 0}
-    indexOfConnection: 0
-  - field: {fileID: 0}
-    indexOfConnection: 0
-  - field: {fileID: 0}
-    indexOfConnection: 0
-  - field: {fileID: 0}
-    indexOfConnection: 0
-  - field: {fileID: 0}
-    indexOfConnection: 0
-  - field: {fileID: 0}
-    indexOfConnection: 0
-  - field: {fileID: 0}
-    indexOfConnection: 0
-  - field: {fileID: 0}
-    indexOfConnection: 0
-  - field: {fileID: 0}
-    indexOfConnection: 0
-  - field: {fileID: 0}
-    indexOfConnection: 0
-  - field: {fileID: 0}
-    indexOfConnection: 0
-  - field: {fileID: 0}
-    indexOfConnection: 0
-  - field: {fileID: 0}
-    indexOfConnection: 0
-  - field: {fileID: 0}
-    indexOfConnection: 0
-  - field: {fileID: 0}
-    indexOfConnection: 0
-  - field: {fileID: 0}
-    indexOfConnection: 0
-  - field: {fileID: 0}
-    indexOfConnection: 0
-  - field: {fileID: 0}
-    indexOfConnection: 0
-  - field: {fileID: 0}
-    indexOfConnection: 0
-  - field: {fileID: 0}
-    indexOfConnection: 0
-  - field: {fileID: 0}
-    indexOfConnection: 0
-  - field: {fileID: 0}
-    indexOfConnection: 0
-  - field: {fileID: 0}
-    indexOfConnection: 0
-  - field: {fileID: 0}
-    indexOfConnection: 0
-  - field: {fileID: 0}
-    indexOfConnection: 0
-  - field: {fileID: 0}
-    indexOfConnection: 0
-  - field: {fileID: 0}
-    indexOfConnection: 0
-  - field: {fileID: 0}
-    indexOfConnection: 0
-  - field: {fileID: 0}
-    indexOfConnection: 0
-  - field: {fileID: 0}
-    indexOfConnection: 0
-  - field: {fileID: 0}
-    indexOfConnection: 0
-  - field: {fileID: 0}
-    indexOfConnection: 0
-  - field: {fileID: 0}
-    indexOfConnection: 0
-  - field: {fileID: 0}
-    indexOfConnection: 0
-  - field: {fileID: 0}
-    indexOfConnection: 0
-  - field: {fileID: 0}
-    indexOfConnection: 0
-  - field: {fileID: 0}
-    indexOfConnection: 0
-  insideDetail: {fileID: 1178496039793896900}
-  gridSize: {x: 8, y: 4}
---- !u!65 &6999890497780183017
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2492642731204948308}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 3.6, y: 0, z: 1.9999999}
-  m_Center: {x: -1.5999999, y: 0, z: 0.79999995}
+  field: {fileID: 0}
 --- !u!1 &2521885475003258272
 GameObject:
   m_ObjectHideFlags: 0
@@ -1005,7 +468,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   part: {fileID: 4895879776888989880}
   connectionIndex: 32
-  field: {fileID: 3854941389443740547}
+  field: {fileID: 0}
 --- !u!1 &3293851738710066624
 GameObject:
   m_ObjectHideFlags: 0
@@ -1038,54 +501,6 @@ Transform:
   m_Father: {fileID: 9141429773855950564}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &3584229022069270746
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4460862554475221647}
-  - component: {fileID: 1431531044629510207}
-  m_Layer: 0
-  m_Name: Colliders
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &4460862554475221647
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3584229022069270746}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 8378930621895162806}
-  m_Father: {fileID: 9141429773855950564}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1431531044629510207
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3584229022069270746}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: df95b8727bb07be44b77472fa5d70bd0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  version: 4
-  colliders:
-  - {fileID: 1874161349516866097}
-  part: {fileID: 4895879776888989880}
 --- !u!1 &4007793185672235253
 GameObject:
   m_ObjectHideFlags: 0
@@ -1181,7 +596,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   part: {fileID: 4895879776888989880}
-  field: {fileID: 3854941389443740547}
+  field: {fileID: 0}
 --- !u!1 &4235268175000595363
 GameObject:
   m_ObjectHideFlags: 0
@@ -1278,7 +693,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   part: {fileID: 4895879776888989880}
   connections: 0e000000100000002000000022000000
-  field: {fileID: 3016118797037672686}
+  field: {fileID: 0}
 --- !u!1 &4353509167582571011
 GameObject:
   m_ObjectHideFlags: 0
@@ -1312,8 +727,6 @@ Transform:
   - {fileID: 4778539024466326255}
   - {fileID: 7939715741193310217}
   - {fileID: 7522764709120903189}
-  - {fileID: 4460862554475221647}
-  - {fileID: 6950159794456650247}
   m_Father: {fileID: 4621917709731080315}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1335,9 +748,9 @@ MonoBehaviour:
   variantID: 0
   stickerSheetID: 0
   decorations: []
-  connectivity: {fileID: 755295351622556826}
+  connectivity: {fileID: 0}
   materialIDs: 01000000
-  colliders: {fileID: 1431531044629510207}
+  colliders: {fileID: 0}
   brick: {fileID: 7707360215592679139}
   knobs:
   - {fileID: 8555517226744154506}
@@ -1533,7 +946,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   part: {fileID: 4895879776888989880}
   connectionIndex: 30
-  field: {fileID: 3854941389443740547}
+  field: {fileID: 0}
 --- !u!1 &5508405831640470393
 GameObject:
   m_ObjectHideFlags: 0
@@ -1724,7 +1137,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   part: {fileID: 4895879776888989880}
   connectionIndex: 14
-  field: {fileID: 3854941389443740547}
+  field: {fileID: 0}
 --- !u!1 &6905616331435204358
 GameObject:
   m_ObjectHideFlags: 0
@@ -1821,7 +1234,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   part: {fileID: 4895879776888989880}
   connectionIndex: 34
-  field: {fileID: 3854941389443740547}
+  field: {fileID: 0}
 --- !u!1 &6963081345116042145
 GameObject:
   m_ObjectHideFlags: 0
@@ -1903,476 +1316,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!1 &7545956321356538586
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 876546754736096874}
-  - component: {fileID: 3854941389443740547}
-  - component: {fileID: 3440015932495107464}
-  m_Layer: 13
-  m_Name: Custom2DField
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &876546754736096874
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7545956321356538586}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.4, y: 0.96, z: -1.2}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 6950159794456650247}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3854941389443740547
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7545956321356538586}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 288372c759dd2a945b8f29e181c3b0aa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  connectivity: {fileID: 755295351622556826}
-  kind: 0
-  connections:
-  - field: {fileID: 3854941389443740547}
-    connectionType: 18
-    quadrants: 1
-    index: 0
-    flags: 1
-    knob: {fileID: 0}
-    tubes: []
-  - field: {fileID: 3854941389443740547}
-    connectionType: 23
-    quadrants: 4
-    index: 1
-    flags: 1
-    knob: {fileID: 0}
-    tubes: []
-  - field: {fileID: 3854941389443740547}
-    connectionType: 18
-    quadrants: 2
-    index: 2
-    flags: 1
-    knob: {fileID: 0}
-    tubes: []
-  - field: {fileID: 3854941389443740547}
-    connectionType: 23
-    quadrants: 4
-    index: 3
-    flags: 1
-    knob: {fileID: 0}
-    tubes: []
-  - field: {fileID: 3854941389443740547}
-    connectionType: 18
-    quadrants: 2
-    index: 4
-    flags: 1
-    knob: {fileID: 0}
-    tubes: []
-  - field: {fileID: 3854941389443740547}
-    connectionType: 23
-    quadrants: 4
-    index: 5
-    flags: 1
-    knob: {fileID: 0}
-    tubes: []
-  - field: {fileID: 3854941389443740547}
-    connectionType: 18
-    quadrants: 2
-    index: 6
-    flags: 1
-    knob: {fileID: 0}
-    tubes: []
-  - field: {fileID: 3854941389443740547}
-    connectionType: 23
-    quadrants: 4
-    index: 7
-    flags: 1
-    knob: {fileID: 0}
-    tubes: []
-  - field: {fileID: 3854941389443740547}
-    connectionType: 18
-    quadrants: 1
-    index: 8
-    flags: 1
-    knob: {fileID: 0}
-    tubes: []
-  - field: {fileID: 3854941389443740547}
-    connectionType: 23
-    quadrants: 4
-    index: 9
-    flags: 1
-    knob: {fileID: 0}
-    tubes: []
-  - field: {fileID: 3854941389443740547}
-    connectionType: 0
-    quadrants: 4
-    index: 10
-    flags: 1
-    knob: {fileID: 6352177949485866106}
-    tubes: []
-  - field: {fileID: 3854941389443740547}
-    connectionType: 23
-    quadrants: 4
-    index: 11
-    flags: 1
-    knob: {fileID: 0}
-    tubes: []
-  - field: {fileID: 3854941389443740547}
-    connectionType: 0
-    quadrants: 4
-    index: 12
-    flags: 1
-    knob: {fileID: 8147268435306039497}
-    tubes: []
-  - field: {fileID: 3854941389443740547}
-    connectionType: 23
-    quadrants: 4
-    index: 13
-    flags: 1
-    knob: {fileID: 0}
-    tubes: []
-  - field: {fileID: 3854941389443740547}
-    connectionType: 0
-    quadrants: 4
-    index: 14
-    flags: 1
-    knob: {fileID: 1666453864377217724}
-    tubes: []
-  - field: {fileID: 3854941389443740547}
-    connectionType: 23
-    quadrants: 4
-    index: 15
-    flags: 1
-    knob: {fileID: 0}
-    tubes: []
-  - field: {fileID: 3854941389443740547}
-    connectionType: 0
-    quadrants: 4
-    index: 16
-    flags: 1
-    knob: {fileID: 7980198069614607220}
-    tubes: []
-  - field: {fileID: 3854941389443740547}
-    connectionType: 23
-    quadrants: 4
-    index: 17
-    flags: 1
-    knob: {fileID: 0}
-    tubes: []
-  - field: {fileID: 3854941389443740547}
-    connectionType: 18
-    quadrants: 2
-    index: 18
-    flags: 1
-    knob: {fileID: 0}
-    tubes: []
-  - field: {fileID: 3854941389443740547}
-    connectionType: 23
-    quadrants: 4
-    index: 19
-    flags: 1
-    knob: {fileID: 0}
-    tubes: []
-  - field: {fileID: 3854941389443740547}
-    connectionType: 18
-    quadrants: 4
-    index: 20
-    flags: 1
-    knob: {fileID: 0}
-    tubes: []
-  - field: {fileID: 3854941389443740547}
-    connectionType: 23
-    quadrants: 4
-    index: 21
-    flags: 1
-    knob: {fileID: 0}
-    tubes: []
-  - field: {fileID: 3854941389443740547}
-    connectionType: 18
-    quadrants: 4
-    index: 22
-    flags: 1
-    knob: {fileID: 0}
-    tubes: []
-  - field: {fileID: 3854941389443740547}
-    connectionType: 23
-    quadrants: 4
-    index: 23
-    flags: 1
-    knob: {fileID: 0}
-    tubes: []
-  - field: {fileID: 3854941389443740547}
-    connectionType: 18
-    quadrants: 4
-    index: 24
-    flags: 1
-    knob: {fileID: 0}
-    tubes: []
-  - field: {fileID: 3854941389443740547}
-    connectionType: 23
-    quadrants: 4
-    index: 25
-    flags: 1
-    knob: {fileID: 0}
-    tubes: []
-  - field: {fileID: 3854941389443740547}
-    connectionType: 18
-    quadrants: 2
-    index: 26
-    flags: 1
-    knob: {fileID: 0}
-    tubes: []
-  - field: {fileID: 3854941389443740547}
-    connectionType: 23
-    quadrants: 4
-    index: 27
-    flags: 1
-    knob: {fileID: 0}
-    tubes: []
-  - field: {fileID: 3854941389443740547}
-    connectionType: 0
-    quadrants: 4
-    index: 28
-    flags: 1
-    knob: {fileID: 4267913423929551692}
-    tubes: []
-  - field: {fileID: 3854941389443740547}
-    connectionType: 23
-    quadrants: 4
-    index: 29
-    flags: 1
-    knob: {fileID: 0}
-    tubes: []
-  - field: {fileID: 3854941389443740547}
-    connectionType: 0
-    quadrants: 4
-    index: 30
-    flags: 1
-    knob: {fileID: 3952248035261329252}
-    tubes: []
-  - field: {fileID: 3854941389443740547}
-    connectionType: 23
-    quadrants: 4
-    index: 31
-    flags: 1
-    knob: {fileID: 0}
-    tubes: []
-  - field: {fileID: 3854941389443740547}
-    connectionType: 0
-    quadrants: 4
-    index: 32
-    flags: 1
-    knob: {fileID: 7110383808689084907}
-    tubes: []
-  - field: {fileID: 3854941389443740547}
-    connectionType: 23
-    quadrants: 4
-    index: 33
-    flags: 1
-    knob: {fileID: 0}
-    tubes: []
-  - field: {fileID: 3854941389443740547}
-    connectionType: 0
-    quadrants: 4
-    index: 34
-    flags: 1
-    knob: {fileID: 8555517226744154506}
-    tubes: []
-  - field: {fileID: 3854941389443740547}
-    connectionType: 23
-    quadrants: 4
-    index: 35
-    flags: 1
-    knob: {fileID: 0}
-    tubes: []
-  - field: {fileID: 3854941389443740547}
-    connectionType: 18
-    quadrants: 1
-    index: 36
-    flags: 1
-    knob: {fileID: 0}
-    tubes: []
-  - field: {fileID: 3854941389443740547}
-    connectionType: 23
-    quadrants: 4
-    index: 37
-    flags: 1
-    knob: {fileID: 0}
-    tubes: []
-  - field: {fileID: 3854941389443740547}
-    connectionType: 18
-    quadrants: 2
-    index: 38
-    flags: 1
-    knob: {fileID: 0}
-    tubes: []
-  - field: {fileID: 3854941389443740547}
-    connectionType: 23
-    quadrants: 4
-    index: 39
-    flags: 1
-    knob: {fileID: 0}
-    tubes: []
-  - field: {fileID: 3854941389443740547}
-    connectionType: 18
-    quadrants: 2
-    index: 40
-    flags: 1
-    knob: {fileID: 0}
-    tubes: []
-  - field: {fileID: 3854941389443740547}
-    connectionType: 23
-    quadrants: 4
-    index: 41
-    flags: 1
-    knob: {fileID: 0}
-    tubes: []
-  - field: {fileID: 3854941389443740547}
-    connectionType: 18
-    quadrants: 2
-    index: 42
-    flags: 1
-    knob: {fileID: 0}
-    tubes: []
-  - field: {fileID: 3854941389443740547}
-    connectionType: 23
-    quadrants: 4
-    index: 43
-    flags: 1
-    knob: {fileID: 0}
-    tubes: []
-  - field: {fileID: 3854941389443740547}
-    connectionType: 18
-    quadrants: 1
-    index: 44
-    flags: 1
-    knob: {fileID: 0}
-    tubes: []
-  connected: 
-  connectableConnections: 45
-  connectedTo:
-  - field: {fileID: 0}
-    indexOfConnection: 0
-  - field: {fileID: 0}
-    indexOfConnection: 0
-  - field: {fileID: 0}
-    indexOfConnection: 0
-  - field: {fileID: 0}
-    indexOfConnection: 0
-  - field: {fileID: 0}
-    indexOfConnection: 0
-  - field: {fileID: 0}
-    indexOfConnection: 0
-  - field: {fileID: 0}
-    indexOfConnection: 0
-  - field: {fileID: 0}
-    indexOfConnection: 0
-  - field: {fileID: 0}
-    indexOfConnection: 0
-  - field: {fileID: 0}
-    indexOfConnection: 0
-  - field: {fileID: 0}
-    indexOfConnection: 0
-  - field: {fileID: 0}
-    indexOfConnection: 0
-  - field: {fileID: 0}
-    indexOfConnection: 0
-  - field: {fileID: 0}
-    indexOfConnection: 0
-  - field: {fileID: 0}
-    indexOfConnection: 0
-  - field: {fileID: 0}
-    indexOfConnection: 0
-  - field: {fileID: 0}
-    indexOfConnection: 0
-  - field: {fileID: 0}
-    indexOfConnection: 0
-  - field: {fileID: 0}
-    indexOfConnection: 0
-  - field: {fileID: 0}
-    indexOfConnection: 0
-  - field: {fileID: 0}
-    indexOfConnection: 0
-  - field: {fileID: 0}
-    indexOfConnection: 0
-  - field: {fileID: 0}
-    indexOfConnection: 0
-  - field: {fileID: 0}
-    indexOfConnection: 0
-  - field: {fileID: 0}
-    indexOfConnection: 0
-  - field: {fileID: 0}
-    indexOfConnection: 0
-  - field: {fileID: 0}
-    indexOfConnection: 0
-  - field: {fileID: 0}
-    indexOfConnection: 0
-  - field: {fileID: 0}
-    indexOfConnection: 0
-  - field: {fileID: 0}
-    indexOfConnection: 0
-  - field: {fileID: 0}
-    indexOfConnection: 0
-  - field: {fileID: 0}
-    indexOfConnection: 0
-  - field: {fileID: 0}
-    indexOfConnection: 0
-  - field: {fileID: 0}
-    indexOfConnection: 0
-  - field: {fileID: 0}
-    indexOfConnection: 0
-  - field: {fileID: 0}
-    indexOfConnection: 0
-  - field: {fileID: 0}
-    indexOfConnection: 0
-  - field: {fileID: 0}
-    indexOfConnection: 0
-  - field: {fileID: 0}
-    indexOfConnection: 0
-  - field: {fileID: 0}
-    indexOfConnection: 0
-  - field: {fileID: 0}
-    indexOfConnection: 0
-  - field: {fileID: 0}
-    indexOfConnection: 0
-  - field: {fileID: 0}
-    indexOfConnection: 0
-  - field: {fileID: 0}
-    indexOfConnection: 0
-  - field: {fileID: 0}
-    indexOfConnection: 0
-  insideDetail: {fileID: 1178496039793896900}
-  gridSize: {x: 8, y: 4}
---- !u!65 &3440015932495107464
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7545956321356538586}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 3.6, y: 0, z: 1.9999999}
-  m_Center: {x: -1.5999999, y: 0, z: 0.79999995}
 --- !u!1 &7646033727086331162
 GameObject:
   m_ObjectHideFlags: 0
@@ -2469,7 +1412,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   part: {fileID: 4895879776888989880}
   connectionIndex: 28
-  field: {fileID: 3854941389443740547}
+  field: {fileID: 0}
 --- !u!1 &7917623038658625823
 GameObject:
   m_ObjectHideFlags: 0
@@ -2480,9 +1423,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4104039936292611026}
   - component: {fileID: 1682605859512631376}
+  - component: {fileID: 1289472475331687457}
   m_Layer: 0
   m_Name: trash2
-  m_TagString: Untagged
+  m_TagString: Trash
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2527,6 +1471,19 @@ MonoBehaviour:
       lightmapped: 0
       randomizeRotation: 1
       lod: 0
+--- !u!135 &1289472475331687457
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7917623038658625823}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 2.18
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &7980897515311510492
 GameObject:
   m_ObjectHideFlags: 0
@@ -2704,51 +1661,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   part: {fileID: 4895879776888989880}
   connectionIndex: 16
-  field: {fileID: 3854941389443740547}
---- !u!1 &8383350736857613115
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 8378930621895162806}
-  - component: {fileID: 1874161349516866097}
-  m_Layer: 0
-  m_Name: Collision Box
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &8378930621895162806
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8383350736857613115}
-  m_LocalRotation: {x: 0, y: -0.7071068, z: 0.7071068, w: -0.00000004371139}
-  m_LocalPosition: {x: -1.2, y: 0.48, z: -0.4}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 4460862554475221647}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &1874161349516866097
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8383350736857613115}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 3.18, y: 1.58, z: 0.94}
-  m_Center: {x: 0, y: 0, z: 0}
+  field: {fileID: 0}
 --- !u!1 &8774243099055861895
 GameObject:
   m_ObjectHideFlags: 0
@@ -2845,7 +1758,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   part: {fileID: 4895879776888989880}
   connections: 0a0000000c0000001c0000001e000000
-  field: {fileID: 3016118797037672686}
+  field: {fileID: 0}
 --- !u!1 &9105564466280640874
 GameObject:
   m_ObjectHideFlags: 0

@@ -61,10 +61,13 @@ public class LegoController : MonoBehaviour, ILEGOGeneralServiceDelegate
 
     public bool controllerInitialized = false;
 
+    public float endScore = 0;
+
 
     // Start is called before the first frame update
     void Start()
     {
+        DontDestroyOnLoad(gameObject);
         frontDeviceHandler.OnDeviceInitialized += OnFrontDeviceInitialized;
         backDeviceHandler.OnDeviceInitialized += OnBackDeviceInitialized;
 
@@ -288,6 +291,33 @@ public class LegoController : MonoBehaviour, ILEGOGeneralServiceDelegate
         }
     }
 
+    public void BlinkLights()
+    {
+        StartCoroutine(DoBlink());
+    }
+
+    IEnumerator DoBlink()
+    {
+        LEGOSingleColorLight.SetPercentCommand offCmd = new LEGOSingleColorLight.SetPercentCommand()
+        {
+            Percentage = 0
+        };
+        LEGOSingleColorLight.SetPercentCommand onCmd = new LEGOSingleColorLight.SetPercentCommand()
+        {
+            Percentage = 100
+        };
+
+        for (var i = 0; i < 3; ++i)
+        {
+            frontLights.SendCommand(offCmd);
+
+            yield return new WaitForSeconds(0.1f);
+
+            frontLights.SendCommand(onCmd);
+
+            yield return new WaitForSeconds(0.1f);
+        }
+    }
 
     public void OnFrontDeviceInitialized(ILEGODevice device)
     {

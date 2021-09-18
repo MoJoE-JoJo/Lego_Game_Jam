@@ -1,12 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+
 
 public class GameManager : MonoBehaviour
 {
     public enum GameState {
         walkingState, drivingState, controllingState
     }
+
+    public int score = 0;
+    public float fuel = 100;
+    public float maxFuel = 100;
+    public Text scoreText;
+    public Slider fuelFraction;
 
     public GameObject trash1;
     public GameObject trash2;
@@ -80,7 +89,15 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        scoreText.text = score.ToString();
+        fuelFraction.value = fuel/maxFuel;
+        if (fuel > maxFuel) fuel = maxFuel;
+
+        if(fuel <= 0)
+        {
+            GameObject.FindGameObjectWithTag("LegoController").GetComponent<LegoController>().endScore = score;
+            SceneManager.LoadScene("Menu Lose");
+        }
     }
 
     private bool WithinSubmarine(float x, float y, float z)
@@ -92,5 +109,15 @@ public class GameManager : MonoBehaviour
         if (-deadZoneZ <= z && z <= deadZoneZ)
             return true;
         return false;
+    }
+
+    public void SpendFuel(float amount)
+    {
+        fuel -= amount;
+    }
+
+    public void AddToScore(int points)
+    {
+        score += points;
     }
 }

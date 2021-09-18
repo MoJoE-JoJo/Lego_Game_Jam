@@ -22,7 +22,7 @@ public class Player : MonoBehaviour
     void Update()
     {
         if (playerFrozen)
-            transform.position = oldPosition;
+            transform.localPosition = oldPosition;
     }
 
     public void FreezePlayer() {
