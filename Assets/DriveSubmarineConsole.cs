@@ -11,6 +11,8 @@ public class DriveSubmarineConsole : MonoBehaviour
     public Submarine submarine;
     public LegoController legoController;
 
+    public GameObject camera;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -23,21 +25,27 @@ public class DriveSubmarineConsole : MonoBehaviour
 
         if (Input.GetKeyUp(KeyCode.E))
         {
+            Debug.Log("Current player mode: " + player.GetPlayerState());
+            Debug.Log("Current game state: " + GameManager._instance.currentGameState);
+
             var distToPlayer = Vector3.Distance(player.transform.localPosition, gameObject.transform.localPosition);
 
-            if (distToPlayer < activationDistance && player.currentState == Player.PlayerState.walkingMode)
+            if (distToPlayer < activationDistance && GameManager._instance.currentGameState == GameManager.GameState.walkingState)
             {
                 Debug.Log("Driving mode activated!");
                 player.FreezePlayer();
-                player.currentState = Player.PlayerState.drivingMode;
-                Camera._instance.ChangeCameraMode(Camera.CameraMode.drivingMode);
+                //player.SetPlayerState(Player.PlayerState.drivingMode);
+                GameManager._instance.currentGameState = GameManager.GameState.drivingState;
+                camera.GetComponent<Camera>().ChangeCameraMode(Camera.CameraMode.drivingMode);
             }
-            else
+            else if(GameManager._instance.currentGameState == GameManager.GameState.drivingState)
             {
+                Debug.Log("Walking mode activated!");
                 player.UnFreezePlayer();
-                player.currentState = Player.PlayerState.walkingMode;
+                //player.SetPlayerState(Player.PlayerState.walkingMode);
+                GameManager._instance.currentGameState = GameManager.GameState.walkingState;
+                camera.GetComponent<Camera>().ChangeCameraMode(Camera.CameraMode.playerMode);
                 legoController.gameMode = GAMEMODES.MINIFIG;
-                Camera._instance.ChangeCameraMode(Camera.CameraMode.playerMode);
             }
         }
 

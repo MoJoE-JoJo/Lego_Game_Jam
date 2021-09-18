@@ -11,7 +11,7 @@ public class Player : MonoBehaviour
 
     private bool playerFrozen;
 
-    public PlayerState currentState;
+    public static PlayerState currentState;
 
     public MinifigController minifigController;
 
@@ -26,7 +26,7 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(playerFrozen)
+        if (playerFrozen)
             transform.position = oldPosition;
     }
 
@@ -40,5 +40,14 @@ public class Player : MonoBehaviour
     {
         minifigController.SetInputEnabled(true);
         playerFrozen = false;
+    }
+
+    public void SetPlayerState(PlayerState state)
+    {
+        currentState = state;
+    }
+
+    public PlayerState GetPlayerState() {
+        return currentState;
     }
 }

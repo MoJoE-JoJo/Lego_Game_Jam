@@ -4,9 +4,15 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    public enum GameState {
+        walkingState, drivingState, controllingState
+    }
+
     public GameObject trash1;
     public GameObject trash2;
     public GameObject trash3;
+
+    public GameState currentGameState; 
 
     public int amountOfTrash;
 
