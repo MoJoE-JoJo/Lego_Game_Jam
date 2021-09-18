@@ -26,7 +26,9 @@ public class ArmsController : MonoBehaviour
         initialPosRightArm = rightArm.transform.position;
 
         //extendedPosLeftArm = leftArm.transform.forward * 10;
-        extendedPosRightArm = rightArm.transform.forward * 10;
+        extendedPosRightArm = (initialPosRightArm) + rightArm.transform.forward * 10;
+        Debug.Log("Initial Pos: " + initialPosRightArm);
+        Debug.Log("final Pos: " + extendedPosRightArm);
     }
 
     // Update is called once per frame
@@ -51,8 +53,8 @@ public class ArmsController : MonoBehaviour
                 camera.GetComponent<Camera>().ChangeCameraMode(Camera.CameraMode.playerMode);
             }
         }
-        /*
-        if (player.currentState == Player.PlayerState.controllingMode)
+        
+        if (GameManager._instance.currentGameState == GameManager.GameState.controllingState)
         {
             if (Input.GetKey(KeyCode.W))
             {
@@ -61,7 +63,7 @@ public class ArmsController : MonoBehaviour
                 {
                     rightExtend = 1.0f;
                 }
-                rightArm.transform.position = Vector3.Lerp(extendedPosRightArm, initialPosRightArm, rightExtend);
+                rightArm.transform.position = Vector3.Lerp(initialPosRightArm, extendedPosRightArm, rightExtend);
             }
             else if (Input.GetKey(KeyCode.S))
             {
@@ -70,9 +72,8 @@ public class ArmsController : MonoBehaviour
                 {
                     rightExtend = 0.0f;
                 }
-                rightArm.transform.position = Vector3.Lerp(extendedPosRightArm, initialPosRightArm, rightExtend);
+                rightArm.transform.position = Vector3.Lerp(initialPosRightArm, extendedPosRightArm, rightExtend);
             }
         }
-        */
     }
 }
