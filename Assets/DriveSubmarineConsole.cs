@@ -4,12 +4,11 @@ using UnityEngine;
 
 public class DriveSubmarineConsole : MonoBehaviour
 {
-    private bool currentlyDriving;
-
     public float speed;
+    public float activationDistance;
 
-    public GameObject player;
-    public GameObject submarine;
+    public Player player;
+    public Submarine submarine;
 
     // Start is called before the first frame update
     void Start()
@@ -23,26 +22,22 @@ public class DriveSubmarineConsole : MonoBehaviour
 
         if (Input.GetKeyUp(KeyCode.E))
         {
-            var distToPlayer = Vector3.Distance(player.transform.position, gameObject.transform.position);
-            if (distToPlayer < 20.0f)
+            var distToPlayer = Vector3.Distance(player.transform.localPosition, gameObject.transform.localPosition);
+
+            if (distToPlayer < activationDistance && !player.currentlyDriving && !player.currentlyControllingArms)
             {
-                //Freeze player and move camera;
-                if (!currentlyDriving)
-                {
-                    Debug.Log("You clicked the drive sub button!");
-                    player.GetComponent<Player>().FreezePlayer();
-                    currentlyDriving = true;
-                    Camera._instance.ChangeCameraMode(Camera.CameraMode.drivingMode);
-                }
-                else
-                {
-                    Debug.Log("Not driving submarine anymore");
-                    player.GetComponent<Player>().UnFreezePlayer();
-                    currentlyDriving = false;
-                    Camera._instance.ChangeCameraMode(Camera.CameraMode.playerMode);
-                }
+                player.FreezePlayer();
+                player.currentlyDriving = true;
+                Camera._instance.ChangeCameraMode(Camera.CameraMode.drivingMode);
+            }
+            else
+            {
+                player.UnFreezePlayer();
+                player.currentlyDriving = false;
+                Camera._instance.ChangeCameraMode(Camera.CameraMode.playerMode);
             }
         }
+
     }
 
     private void FixedUpdate()
@@ -53,26 +48,28 @@ public class DriveSubmarineConsole : MonoBehaviour
 
             if (Input.GetKey(KeyCode.W))
             {
-                rb.AddForce(transform.forward * speed);
+                submarine.AddForce(transform.forward * speed);
+                //rb.AddForce(transform.forward * speed);
             }
             else if (Input.GetKey(KeyCode.S))
             {
-                rb.AddForce(-transform.forward * speed);
+                submarine.AddForce(-transform.forward * speed);
+                //rb.AddForce(-transform.forward * speed);
             }
             if (Input.GetKey(KeyCode.A))
             {
-                rb.AddTorque(-transform.up * speed);
+                submarine.AddTorque(-transform.up * speed);
             }
             else if (Input.GetKey(KeyCode.D))
             {
-                rb.AddTorque(transform.up * speed);
+                submarine.AddTorque(transform.up * speed);
             }
             if (Input.GetKey(KeyCode.Q)) {
-                rb.AddForce(transform.up * speed);
+                submarine.AddForce(transform.up * speed);
             }
             else if (Input.GetKey(KeyCode.Z))
             {
-                rb.AddForce(-transform.up * speed);
+                submarine.AddForce(-transform.up * speed);
             }
 
         }

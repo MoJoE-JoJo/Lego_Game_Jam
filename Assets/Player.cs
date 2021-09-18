@@ -5,7 +5,14 @@ using LEGOMinifig;
 
 public class Player : MonoBehaviour
 {
+    public enum playerState {
+        walkingMode, drivingMode, controllingMode
+    }
+
     private bool playerFrozen;
+
+    public bool currentlyDriving;
+    public bool currentlyControllingArms;
 
     public MinifigController minifigController;
 
