@@ -9,6 +9,7 @@ public class ArmsController : MonoBehaviour
 
     public float activationDistance;
     public Player player;
+    public GameObject camera;
 
     //public GameObject leftArm;
     public GameObject rightArm;
@@ -35,18 +36,18 @@ public class ArmsController : MonoBehaviour
         {
             var distToPlayer = Vector3.Distance(player.transform.localPosition, gameObject.transform.localPosition);
 
-            if (distToPlayer < activationDistance && player.currentState == Player.PlayerState.walkingMode)
+            if (distToPlayer < activationDistance && player.GetPlayerState() == Player.PlayerState.walkingMode)
             {
                 Debug.Log("ControllingMode activated!");
                 player.FreezePlayer();
-                player.currentState = Player.PlayerState.controllingMode;
-                Camera._instance.ChangeCameraMode(Camera.CameraMode.controllingMode);
+                player.SetPlayerState(Player.PlayerState.controllingMode);
+                camera.GetComponent<Camera>().ChangeCameraMode(Camera.CameraMode.controllingMode);
             }
             else
             {
                 player.UnFreezePlayer();
-                player.currentState = Player.PlayerState.walkingMode;
-                Camera._instance.ChangeCameraMode(Camera.CameraMode.playerMode);
+                player.SetPlayerState(Player.PlayerState.walkingMode);
+                camera.GetComponent<Camera>().ChangeCameraMode(Camera.CameraMode.playerMode);
             }
         }
         /*
