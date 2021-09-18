@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Animations.Rigging;
@@ -646,7 +646,8 @@ namespace LEGOMinifig
             {
                 // Use a sticky move to make the minifig stay with moving platforms.
                 var stickyMove = airborneTime < stickyTime ? Vector3.down * stickyForce * Time.deltaTime : Vector3.zero;
-                controller.Move((moveDelta + externalMotion) * Time.deltaTime + stickyMove);
+                if(controller.enabled)
+                    controller.Move((moveDelta + externalMotion) * Time.deltaTime + stickyMove);
             }
 
             // If becoming grounded by this Move, reset y movement and airborne time.

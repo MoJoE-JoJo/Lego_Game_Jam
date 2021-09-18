@@ -11,6 +11,7 @@ public class DriveSubmarineConsole : MonoBehaviour
     public Submarine submarine;
 
     public GameObject camera;
+    public GameObject roof;
 
     // Start is called before the first frame update
     void Start()
@@ -24,7 +25,10 @@ public class DriveSubmarineConsole : MonoBehaviour
 
         if (Input.GetKeyUp(KeyCode.E))
         {
+            var dist = Vector3.Distance(player.transform.position, transform.position);
+
             Debug.Log("Current game state: " + GameManager._instance.currentGameState);
+            Debug.Log("Dist to player: " + dist);
 
             var distToPlayer = Vector3.Distance(player.transform.localPosition, gameObject.transform.localPosition);
 
@@ -33,14 +37,16 @@ public class DriveSubmarineConsole : MonoBehaviour
                 Debug.Log("Driving mode activated!");
                 player.FreezePlayer();
                 GameManager._instance.currentGameState = GameManager.GameState.drivingState;
-                camera.GetComponent<Camera>().ChangeCameraMode(Camera.CameraMode.drivingMode);
+                camera.GetComponent<CameraController>().ChangeCameraMode(CameraController.CameraMode.Driving);
+                roof.SetActive(true);
             }
             else if(GameManager._instance.currentGameState == GameManager.GameState.drivingState)
             {
                 Debug.Log("Walking mode activated!");
                 player.UnFreezePlayer();
                 GameManager._instance.currentGameState = GameManager.GameState.walkingState;
-                camera.GetComponent<Camera>().ChangeCameraMode(Camera.CameraMode.playerMode);
+                camera.GetComponent<CameraController>().ChangeCameraMode(CameraController.CameraMode.Walking);
+                roof.SetActive(false);
             }
         }
 

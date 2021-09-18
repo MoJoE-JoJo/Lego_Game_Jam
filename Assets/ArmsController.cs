@@ -43,14 +43,14 @@ public class ArmsController : MonoBehaviour
                 Debug.Log("Controlling Mode activated!");
                 player.FreezePlayer();
                 GameManager._instance.currentGameState = GameManager.GameState.controllingState;
-                camera.GetComponent<Camera>().ChangeCameraMode(Camera.CameraMode.controllingMode);
+                camera.GetComponent<CameraController>().ChangeCameraMode(CameraController.CameraMode.Controlling);
             }
             else if (GameManager._instance.currentGameState == GameManager.GameState.controllingState)
             {
                 Debug.Log("Walking Mode activated!");
                 player.UnFreezePlayer();
                 GameManager._instance.currentGameState = GameManager.GameState.walkingState;
-                camera.GetComponent<Camera>().ChangeCameraMode(Camera.CameraMode.playerMode);
+                camera.GetComponent<CameraController>().ChangeCameraMode(CameraController.CameraMode.Walking);
             }
         }
         
