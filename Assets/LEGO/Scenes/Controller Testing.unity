@@ -453,10 +453,17 @@ MonoBehaviour:
   minButtonForce: 30
   maxButtonForce: 80
   leverDeadZone: 10
-  steeringWheelDeadZone: 10
+  steeringWheelDeadZone: 5
   frontDeviceHandler: {fileID: 1705188133}
   backDeviceHandler: {fileID: 1242053082}
-  gameMode: 0
+  gameMode: 1
+  rightButtonValue: 0
+  leftButtonValue: 0
+  steeringWheelValue: 0
+  rightLeverValue: 0
+  leftLeverValue: 0
+  rightButtonPressed: 0
+  leftButtonPressed: 0
 --- !u!4 &1832020371
 Transform:
   m_ObjectHideFlags: 0

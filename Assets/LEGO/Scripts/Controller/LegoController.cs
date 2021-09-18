@@ -40,11 +40,17 @@ public class LegoController : MonoBehaviour, ILEGOGeneralServiceDelegate
 
     public GAMEMODES gameMode = GAMEMODES.MINIFIG;
 
-    private int rightButtonValue;
-    private int leftButtonValue;
-    private int steeringWheelValue;
-    private int rightLeverValue;
-    private int leftLeverValue;
+    public int rightButtonValue;
+    public int leftButtonValue;
+    public int steeringWheelValue;
+    public int rightLeverValue;
+    public int leftLeverValue;
+
+    public bool rightButtonPressed = false;
+    public bool leftButtonPressed = false;
+
+    private int rightLeverUpright = 85;
+    private int leftLeverUpright = -85;
 
 
     // Start is called before the first frame update
@@ -63,29 +69,115 @@ public class LegoController : MonoBehaviour, ILEGOGeneralServiceDelegate
     // Update is called once per frame
     void Update()
     {
+
         if(gameMode == GAMEMODES.SUBMARINE)
         {
-            //Right-arm locking
-            if(rightButtonValue >= minButtonForce)
+            //deadzone stuff
+            if(steeringWheelValue < steeringWheelDeadZone && steeringWheelValue > -steeringWheelDeadZone)
             {
+                steeringWheelValue = 0;
+            }
+            if (rightLeverValue < rightLeverUpright+leverDeadZone && rightLeverValue > rightLeverUpright - steeringWheelDeadZone)
+            {
+                rightLeverValue = rightLeverUpright;
+            }
+            if (leftLeverValue < leftLeverUpright + leverDeadZone && leftLeverValue > leftLeverUpright - steeringWheelDeadZone)
+            {
+                leftLeverValue = leftLeverUpright;
+            }
+
+            if (!rightButtonPressed && rightButtonValue >= minButtonForce)
+            {
+                rightButtonPressed = true;
+                Debug.Log("Yolo right");
                 var cmd = new LEGOTachoMotorCommon.DriftCommand();
+                cmd.ExecuteImmediately = true;
                 rightLever.SendCommand(cmd);
             }
-            else if(rightButtonValue < minButtonForce)
+            else if (rightButtonPressed && rightButtonValue < minButtonForce)
             {
-                var cmd = new LEGOTachoMotorCommon.HoldCommand();
+                rightButtonPressed = false;
+                Debug.Log("Yolo right end");
+                var cmd = new LEGOTachoMotorCommon.SetSpeedPositionCommand()
+                {
+                    Position = rightLeverValue,
+                    Speed = 3
+                };
+                cmd.SetEndState(MotorWithTachoEndState.Holding);
+                cmd.ExecuteImmediately = true;
                 rightLever.SendCommand(cmd);
             }
-            //Left-arm locking
-            if (leftButtonValue >= minButtonForce)
+
+            if (!leftButtonPressed && leftButtonValue >= minButtonForce)
             {
+                leftButtonPressed = true;
+                Debug.Log("Yolo right");
                 var cmd = new LEGOTachoMotorCommon.DriftCommand();
                 cmd.ExecuteImmediately = true;
                 leftLever.SendCommand(cmd);
             }
-            else if (leftButtonValue < minButtonForce)
+            else if (leftButtonPressed && leftButtonValue < minButtonForce)
             {
-                var cmd = new LEGOTachoMotorCommon.HoldCommand();
+                leftButtonPressed = false;
+                Debug.Log("Yolo right end");
+                var cmd = new LEGOTachoMotorCommon.SetSpeedPositionCommand()
+                {
+                    Position = leftLeverValue,
+                    Speed = 3
+                };
+                cmd.SetEndState(MotorWithTachoEndState.Holding);
+                cmd.ExecuteImmediately = true;
+                leftLever.SendCommand(cmd);
+            }
+
+        }
+        if (gameMode == GAMEMODES.SUBMARINE)
+        {
+            
+        }
+
+        /*
+        if(gameMode == GAMEMODES.SUBMARINE)
+        {
+            //Right-arm locking
+            if(!buttonPressed && rightButtonValue >= minButtonForce)
+            {
+                buttonPressed = true;
+                Debug.Log("Yolo right");
+                var cmd = new LEGOTachoMotorCommon.DriftCommand();
+                cmd.ExecuteImmediately = true;
+                rightLever.SendCommand(cmd);
+            }
+            else if(buttonPressed && rightButtonValue < minButtonForce)
+            {
+                buttonPressed = false;
+                Debug.Log("Yolo right end");
+                var cmd = new LEGOTachoMotorCommon.SetSpeedPositionCommand()
+                {
+                    Position = rightLeverValue,
+                    Speed = 4
+                };
+                cmd.ExecuteImmediately = true;
+                rightLever.SendCommand(cmd);
+            }
+            //Left-arm locking
+            if (!buttonPressed && leftButtonValue >= minButtonForce)
+            {
+                buttonPressed = true;
+                Debug.Log("Yolo left");
+                var cmd = new LEGOTachoMotorCommon.DriftCommand();
+                cmd.ExecuteImmediately = true;
+                leftLever.SendCommand(cmd);
+            }
+            else if (buttonPressed && leftButtonValue < minButtonForce)
+            {
+                buttonPressed = false;
+                Debug.Log("Yolo left end");
+                var cmd = new LEGOTachoMotorCommon.SetSpeedPositionCommand()
+                {
+                    Position = leftLeverValue,
+                    Speed = 4
+                };
                 cmd.ExecuteImmediately = true;
                 leftLever.SendCommand(cmd);
             }
@@ -100,13 +192,14 @@ public class LegoController : MonoBehaviour, ILEGOGeneralServiceDelegate
         {
 
         }
+        */
     }
 
     public void RightLeverReset()
     {
         var cmd = new LEGOTachoMotorCommon.SetSpeedPositionCommand()
         {
-            Position = 85,
+            Position = rightLeverUpright,
             Speed = 4
         };
         cmd.SetEndState(MotorWithTachoEndState.Holding);
@@ -117,7 +210,7 @@ public class LegoController : MonoBehaviour, ILEGOGeneralServiceDelegate
     {
         var cmd = new LEGOTachoMotorCommon.SetSpeedPositionCommand()
         {
-            Position = -85,
+            Position = leftLeverUpright,
             Speed = 4
         };
         cmd.SetEndState(MotorWithTachoEndState.Holding);
@@ -145,13 +238,15 @@ public class LegoController : MonoBehaviour, ILEGOGeneralServiceDelegate
     {
         if (right == true)
         {
-            Debug.Log("Right Button: " + amount);
+            //Debug.Log("Right Button: " + amount);
             rightButtonValue = amount;
+
+            
             
         }
         else if (right == false)
         {
-            Debug.Log("Left Button: " + amount);
+            //Debug.Log("Left Button: " + amount);
             leftButtonValue = amount;
         }
 
@@ -161,32 +256,41 @@ public class LegoController : MonoBehaviour, ILEGOGeneralServiceDelegate
     {
         if (right == true)
         {
-            Debug.Log("Right Lever: " + amount);
-            rightLeverValue = amount;
+            //Debug.Log("Right Lever: " + amount);
+            if(amount > rightLeverValue + leverDeadZone || amount < rightLeverValue - leverDeadZone)
+            {
+                rightLeverValue = amount;
+            }
         }
         else if (right == false)
         {
-            Debug.Log("Left Lever: " + amount);
-            leftLeverValue = amount;
+            //Debug.Log("Left Lever: " + amount);
+            if (amount > leftLeverValue + leverDeadZone || amount < leftLeverValue - leverDeadZone)
+            {
+                leftLeverValue = amount;
+            }
         }
     }
 
     public void SteeringWheelRotated(int amount)
     {
-        Debug.Log("Steering Wheel: " + amount);
-        steeringWheelValue = amount;
+        //Debug.Log("Steering Wheel: " + amount);
+        if (amount > steeringWheelValue + leverDeadZone || amount < steeringWheelValue - leverDeadZone)
+        {
+            steeringWheelValue = amount;
+        }
     }
 
 
     public void OnFrontDeviceInitialized(ILEGODevice device)
     {
-        Debug.LogFormat("OnDeviceInitialized {0}", device);
+        //Debug.LogFormat("OnDeviceInitialized {0}", device);
         SetUpFrontWithDevice(device);
     }
 
     public void OnBackDeviceInitialized(ILEGODevice device)
     {
-        Debug.LogFormat("OnDeviceInitialized {0}", device);
+        //Debug.LogFormat("OnDeviceInitialized {0}", device);
         SetUpBackWithDevice(device);
     }
 
@@ -352,7 +456,7 @@ public class LegoController : MonoBehaviour, ILEGOGeneralServiceDelegate
         else if (service == leftButton)
         {
             //currentBoostValue = newValue.RawValues[0];
-            ButtonPress((int)newValue.RawValues[0], true);
+            ButtonPress((int)newValue.RawValues[0], false);
         }
     }
 
