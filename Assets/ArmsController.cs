@@ -4,29 +4,28 @@ using UnityEngine;
 
 public class ArmsController : MonoBehaviour
 {
-    private bool currentlyControlling;
     private float leftExtend;
     private float rightExtend;
 
     public float activationDistance;
-    public GameObject player;
+    public Player player;
 
-    public GameObject leftArm;
+    //public GameObject leftArm;
     public GameObject rightArm;
 
-    private Vector3 initialPosLeftArm;
+    //private Vector3 initialPosLeftArm;
     private Vector3 initialPosRightArm;
-    private Vector3 extendedPosLeftArm;
+    //private Vector3 extendedPosLeftArm;
     private Vector3 extendedPosRightArm;
 
     // Start is called before the first frame update
     void Start()
     {
-        initialPosLeftArm = leftArm.transform.position;
+        //initialPosLeftArm = leftArm.transform.position;
         initialPosRightArm = rightArm.transform.position;
 
-        extendedPosLeftArm = leftArm.transform.forward * 10;
-        extendedPosRightArm = leftArm.transform.forward * 10;
+        //extendedPosLeftArm = leftArm.transform.forward * 10;
+        extendedPosRightArm = rightArm.transform.forward * 10;
     }
 
     // Update is called once per frame
@@ -36,25 +35,22 @@ public class ArmsController : MonoBehaviour
         {
             var distToPlayer = Vector3.Distance(player.transform.localPosition, gameObject.transform.localPosition);
 
-            if (distToPlayer < activationDistance && !currentlyControlling)
+            if (distToPlayer < activationDistance && player.currentState == Player.PlayerState.walkingMode)
             {
-                player.GetComponent<Player>().FreezePlayer();
-                currentlyControlling = true;
+                Debug.Log("ControllingMode activated!");
+                player.FreezePlayer();
+                player.currentState = Player.PlayerState.controllingMode;
                 Camera._instance.ChangeCameraMode(Camera.CameraMode.controllingMode);
             }
             else
             {
-                player.GetComponent<Player>().UnFreezePlayer();
-                currentlyControlling = false;
+                player.UnFreezePlayer();
+                player.currentState = Player.PlayerState.walkingMode;
                 Camera._instance.ChangeCameraMode(Camera.CameraMode.playerMode);
             }
-
         }
-    }
-
-    private void FixedUpdate()
-    {
-        if (currentlyControlling)
+        /*
+        if (player.currentState == Player.PlayerState.controllingMode)
         {
             if (Input.GetKey(KeyCode.W))
             {
@@ -63,9 +59,7 @@ public class ArmsController : MonoBehaviour
                 {
                     rightExtend = 1.0f;
                 }
-
                 rightArm.transform.position = Vector3.Lerp(extendedPosRightArm, initialPosRightArm, rightExtend);
-                Debug.Log("Extend: " + rightExtend);
             }
             else if (Input.GetKey(KeyCode.S))
             {
@@ -74,12 +68,9 @@ public class ArmsController : MonoBehaviour
                 {
                     rightExtend = 0.0f;
                 }
-
                 rightArm.transform.position = Vector3.Lerp(extendedPosRightArm, initialPosRightArm, rightExtend);
-
-                Debug.Log("Extend: " + rightExtend);
             }
         }
+        */
     }
-
 }
