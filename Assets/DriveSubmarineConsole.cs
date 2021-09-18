@@ -53,11 +53,14 @@ public class DriveSubmarineConsole : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (player.currentState == Player.PlayerState.drivingMode)
+        if (GameManager._instance.currentGameState == GameManager.GameState.drivingState)
         {
+            Debug.Log(legoController.GetRightLeverValue());
+            Debug.Log(legoController.GetSteeringWheelValue());
+            Debug.Log(legoController.GetLeftLeverValue());
             legoController.gameMode = GAMEMODES.SUBMARINE;
             submarine.AddForce(transform.forward * speed * legoController.GetRightLeverValue());
-            submarine.AddTorque(transform.up * speed * legoController.steeringWheelValue);
+            submarine.AddTorque(transform.up * speed * legoController.GetSteeringWheelValue());
             submarine.AddForce(transform.up * speed * legoController.GetLeftLeverValue());
         }
     }

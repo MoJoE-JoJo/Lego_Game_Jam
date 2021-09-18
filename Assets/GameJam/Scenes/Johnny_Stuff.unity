@@ -4615,7 +4615,7 @@ Transform:
   - {fileID: 1209622012}
   - {fileID: 506920748}
   m_Father: {fileID: 1567743135}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &79295280
 MonoBehaviour:
@@ -4656,6 +4656,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   activationDistance: 0
   player: {fileID: 0}
+  camera: {fileID: 0}
   rightArm: {fileID: 0}
 --- !u!1 &79719628
 GameObject:
@@ -11920,6 +11921,12 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 3.6, y: 0, z: 1.9999999}
   m_Center: {x: -1.5999999, y: 0, z: 0.79999995}
+--- !u!4 &203743117 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7263615739690362645, guid: f7e7ae6850889314da05b4f25d2ffb7b,
+    type: 3}
+  m_PrefabInstance: {fileID: 7263615739601830575}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &204436762
 GameObject:
   m_ObjectHideFlags: 0
@@ -19237,7 +19244,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87abed2fe53862e4cb8c8f269721efdd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentState: 0
   minifigController: {fileID: 363726260}
   oldPosition: {x: 0, y: 0, z: 0}
 --- !u!1 &365838172
@@ -35520,6 +35526,7 @@ MonoBehaviour:
   trash1: {fileID: 5376197009294644374, guid: fd59b91e2498a8b4cb3d8f7904136cc4, type: 3}
   trash2: {fileID: 7917623038658625823, guid: 060c62d3e0c39014e9fc6a88b8739987, type: 3}
   trash3: {fileID: 8026028509757973288, guid: 97f996dba2e10da4a893596d2211ddd3, type: 3}
+  currentGameState: 0
   amountOfTrash: 100
   borderX: 20
   borderY: 20
@@ -96990,6 +96997,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 203743117}
   - {fileID: 744502047}
   - {fileID: 1670479932}
   - {fileID: 79295279}
@@ -101056,7 +101064,7 @@ Transform:
   m_Children:
   - {fileID: 591648918}
   m_Father: {fileID: 1567743135}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1670479933
 MonoBehaviour:
@@ -101075,6 +101083,7 @@ MonoBehaviour:
   player: {fileID: 363726265}
   submarine: {fileID: 1567743136}
   legoController: {fileID: 2036866343}
+  camera: {fileID: 0}
 --- !u!1 &1672405706
 GameObject:
   m_ObjectHideFlags: 0
@@ -118728,7 +118737,7 @@ Transform:
   m_Children:
   - {fileID: 1457980572}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2038561880
 GameObject:
@@ -125209,7 +125218,7 @@ PrefabInstance:
     - target: {fileID: 5092578336357688284, guid: efec0952356549d40962c0b9f2850af6,
         type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5092578336357688284, guid: efec0952356549d40962c0b9f2850af6,
         type: 3}
@@ -125268,7 +125277,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 1567743135}
     m_Modifications:
     - target: {fileID: 7263615738019158458, guid: f7e7ae6850889314da05b4f25d2ffb7b,
         type: 3}
@@ -125363,7 +125372,7 @@ PrefabInstance:
     - target: {fileID: 7263615739690362645, guid: f7e7ae6850889314da05b4f25d2ffb7b,
         type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7263615739690362645, guid: f7e7ae6850889314da05b4f25d2ffb7b,
         type: 3}
