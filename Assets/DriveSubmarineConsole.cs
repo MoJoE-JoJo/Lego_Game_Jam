@@ -13,7 +13,7 @@ public class DriveSubmarineConsole : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        currentlyDriving = false;
+
     }
 
     // Update is called once per frame
@@ -24,16 +24,17 @@ public class DriveSubmarineConsole : MonoBehaviour
         {
             var distToPlayer = Vector3.Distance(player.transform.localPosition, gameObject.transform.localPosition);
 
-            if (distToPlayer < activationDistance && !player.currentlyDriving && !player.currentlyControllingArms)
+            if (distToPlayer < activationDistance && player.currentState == Player.PlayerState.walkingMode)
             {
+                Debug.Log("Driving mode activated!");
                 player.FreezePlayer();
-                player.currentlyDriving = true;
+                player.currentState = Player.PlayerState.drivingMode;
                 Camera._instance.ChangeCameraMode(Camera.CameraMode.drivingMode);
             }
             else
             {
                 player.UnFreezePlayer();
-                player.currentlyDriving = false;
+                player.currentState = Player.PlayerState.walkingMode;
                 Camera._instance.ChangeCameraMode(Camera.CameraMode.playerMode);
             }
         }
@@ -42,19 +43,15 @@ public class DriveSubmarineConsole : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (currentlyDriving) {
-
-            var rb = submarine.GetComponent<Rigidbody>();
+        if (player.currentState == Player.PlayerState.drivingMode) {
 
             if (Input.GetKey(KeyCode.W))
             {
                 submarine.AddForce(transform.forward * speed);
-                //rb.AddForce(transform.forward * speed);
             }
             else if (Input.GetKey(KeyCode.S))
             {
                 submarine.AddForce(-transform.forward * speed);
-                //rb.AddForce(-transform.forward * speed);
             }
             if (Input.GetKey(KeyCode.A))
             {

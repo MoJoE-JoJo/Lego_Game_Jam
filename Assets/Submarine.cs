@@ -31,8 +31,6 @@ public class Submarine : MonoBehaviour
 
         var oldY = transform.rotation.y;
 
-        Debug.Log("Old rot: " + oldY);
-
         transform.rotation.eulerAngles.Set(0, oldY, 0);
 
         //transform.rotation = new Quaternion(0, oldY, 0, 0);

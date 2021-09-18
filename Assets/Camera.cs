@@ -49,7 +49,7 @@ public class Camera : MonoBehaviour
         if (currentMode == CameraMode.playerMode)
         {
             transform.position = new Vector3(submarineTransform.position.x + playerCameraOffset.x, submarineTransform.position.y + playerCameraOffset.y, submarineTransform.position.z + playerCameraOffset.z);
-            //transform.rotation = new Quaternion(submarineTransform.rotation.x + playerCameraRotation.x, submarineTransform.rotation.y + playerCameraRotation.y, submarineTransform.rotation.z + playerCameraRotation.z, submarineTransform.rotation.w + playerCameraRotation.w);
+            transform.rotation = new Quaternion(submarineTransform.rotation.x + playerCameraRotation.x, submarineTransform.rotation.y + playerCameraRotation.y, submarineTransform.rotation.z + playerCameraRotation.z, submarineTransform.rotation.w + playerCameraRotation.w);
         }
         else if (currentMode == CameraMode.drivingMode)
         {
