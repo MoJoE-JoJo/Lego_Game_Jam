@@ -26,7 +26,9 @@ public class ArmsController : MonoBehaviour
         initialPosRightArm = rightArm.transform.position;
 
         //extendedPosLeftArm = leftArm.transform.forward * 10;
-        extendedPosRightArm = rightArm.transform.forward * 10;
+        extendedPosRightArm = (initialPosRightArm) + rightArm.transform.forward * 10;
+        Debug.Log("Initial Pos: " + initialPosRightArm);
+        Debug.Log("final Pos: " + extendedPosRightArm);
     }
 
     // Update is called once per frame
@@ -36,22 +38,23 @@ public class ArmsController : MonoBehaviour
         {
             var distToPlayer = Vector3.Distance(player.transform.localPosition, gameObject.transform.localPosition);
 
-            if (distToPlayer < activationDistance && player.GetPlayerState() == Player.PlayerState.walkingMode)
+            if (distToPlayer < activationDistance && GameManager._instance.currentGameState == GameManager.GameState.walkingState)
             {
-                Debug.Log("ControllingMode activated!");
+                Debug.Log("Controlling Mode activated!");
                 player.FreezePlayer();
-                player.SetPlayerState(Player.PlayerState.controllingMode);
+                GameManager._instance.currentGameState = GameManager.GameState.controllingState;
                 camera.GetComponent<Camera>().ChangeCameraMode(Camera.CameraMode.controllingMode);
             }
-            else
+            else if (GameManager._instance.currentGameState == GameManager.GameState.controllingState)
             {
+                Debug.Log("Walking Mode activated!");
                 player.UnFreezePlayer();
-                player.SetPlayerState(Player.PlayerState.walkingMode);
+                GameManager._instance.currentGameState = GameManager.GameState.walkingState;
                 camera.GetComponent<Camera>().ChangeCameraMode(Camera.CameraMode.playerMode);
             }
         }
-        /*
-        if (player.currentState == Player.PlayerState.controllingMode)
+        
+        if (GameManager._instance.currentGameState == GameManager.GameState.controllingState)
         {
             if (Input.GetKey(KeyCode.W))
             {
@@ -60,7 +63,7 @@ public class ArmsController : MonoBehaviour
                 {
                     rightExtend = 1.0f;
                 }
-                rightArm.transform.position = Vector3.Lerp(extendedPosRightArm, initialPosRightArm, rightExtend);
+                rightArm.transform.position = Vector3.Lerp(initialPosRightArm, extendedPosRightArm, rightExtend);
             }
             else if (Input.GetKey(KeyCode.S))
             {
@@ -69,9 +72,8 @@ public class ArmsController : MonoBehaviour
                 {
                     rightExtend = 0.0f;
                 }
-                rightArm.transform.position = Vector3.Lerp(extendedPosRightArm, initialPosRightArm, rightExtend);
+                rightArm.transform.position = Vector3.Lerp(initialPosRightArm, extendedPosRightArm, rightExtend);
             }
         }
-        */
     }
 }
