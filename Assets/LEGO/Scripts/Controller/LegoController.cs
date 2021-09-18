@@ -26,6 +26,8 @@ public class LegoController : MonoBehaviour, ILEGOGeneralServiceDelegate
 
     LEGOSingleColorLight frontLights;
 
+    //public GameObject submarine;
+
     public int minButtonForce;
     public int maxButtonForce;
 
@@ -48,9 +50,16 @@ public class LegoController : MonoBehaviour, ILEGOGeneralServiceDelegate
 
     public bool rightButtonPressed = false;
     public bool leftButtonPressed = false;
+    public bool steeringWheelLocked = false;
 
     private int rightLeverUpright = 85;
     private int leftLeverUpright = -85;
+
+
+    private bool frontInited = false;
+    private bool backInited = false;
+
+    public bool controllerInitialized = false;
 
 
     // Start is called before the first frame update
@@ -70,129 +79,127 @@ public class LegoController : MonoBehaviour, ILEGOGeneralServiceDelegate
     void Update()
     {
 
-        if(gameMode == GAMEMODES.SUBMARINE)
+        if(frontInited && backInited && !controllerInitialized)
         {
-            //deadzone stuff
-            if(steeringWheelValue < steeringWheelDeadZone && steeringWheelValue > -steeringWheelDeadZone)
-            {
-                steeringWheelValue = 0;
-            }
-            if (rightLeverValue < rightLeverUpright+leverDeadZone && rightLeverValue > rightLeverUpright - steeringWheelDeadZone)
-            {
-                rightLeverValue = rightLeverUpright;
-            }
-            if (leftLeverValue < leftLeverUpright + leverDeadZone && leftLeverValue > leftLeverUpright - steeringWheelDeadZone)
-            {
-                leftLeverValue = leftLeverUpright;
-            }
+            controllerInitialized = true;
+        }
 
-            if (!rightButtonPressed && rightButtonValue >= minButtonForce)
+        if (controllerInitialized)
+        {
+            if (gameMode == GAMEMODES.SUBMARINE)
             {
-                rightButtonPressed = true;
-                Debug.Log("Yolo right");
-                var cmd = new LEGOTachoMotorCommon.DriftCommand();
-                cmd.ExecuteImmediately = true;
-                rightLever.SendCommand(cmd);
-            }
-            else if (rightButtonPressed && rightButtonValue < minButtonForce)
-            {
-                rightButtonPressed = false;
-                Debug.Log("Yolo right end");
-                var cmd = new LEGOTachoMotorCommon.SetSpeedPositionCommand()
+                //deadzone stuff
+                if (steeringWheelValue < steeringWheelDeadZone && steeringWheelValue > -steeringWheelDeadZone)
                 {
-                    Position = rightLeverValue,
-                    Speed = 3
-                };
-                cmd.SetEndState(MotorWithTachoEndState.Holding);
-                cmd.ExecuteImmediately = true;
-                rightLever.SendCommand(cmd);
-            }
-
-            if (!leftButtonPressed && leftButtonValue >= minButtonForce)
-            {
-                leftButtonPressed = true;
-                Debug.Log("Yolo right");
-                var cmd = new LEGOTachoMotorCommon.DriftCommand();
-                cmd.ExecuteImmediately = true;
-                leftLever.SendCommand(cmd);
-            }
-            else if (leftButtonPressed && leftButtonValue < minButtonForce)
-            {
-                leftButtonPressed = false;
-                Debug.Log("Yolo right end");
-                var cmd = new LEGOTachoMotorCommon.SetSpeedPositionCommand()
+                    steeringWheelValue = 0;
+                }
+                if (rightLeverValue < rightLeverUpright + leverDeadZone && rightLeverValue > rightLeverUpright - steeringWheelDeadZone)
                 {
-                    Position = leftLeverValue,
-                    Speed = 3
-                };
-                cmd.SetEndState(MotorWithTachoEndState.Holding);
-                cmd.ExecuteImmediately = true;
-                leftLever.SendCommand(cmd);
-            }
-
-        }
-        if (gameMode == GAMEMODES.SUBMARINE)
-        {
-            
-        }
-
-        /*
-        if(gameMode == GAMEMODES.SUBMARINE)
-        {
-            //Right-arm locking
-            if(!buttonPressed && rightButtonValue >= minButtonForce)
-            {
-                buttonPressed = true;
-                Debug.Log("Yolo right");
-                var cmd = new LEGOTachoMotorCommon.DriftCommand();
-                cmd.ExecuteImmediately = true;
-                rightLever.SendCommand(cmd);
-            }
-            else if(buttonPressed && rightButtonValue < minButtonForce)
-            {
-                buttonPressed = false;
-                Debug.Log("Yolo right end");
-                var cmd = new LEGOTachoMotorCommon.SetSpeedPositionCommand()
+                    rightLeverValue = rightLeverUpright;
+                }
+                if (leftLeverValue < leftLeverUpright + leverDeadZone && leftLeverValue > leftLeverUpright - steeringWheelDeadZone)
                 {
-                    Position = rightLeverValue,
-                    Speed = 4
-                };
-                cmd.ExecuteImmediately = true;
-                rightLever.SendCommand(cmd);
-            }
-            //Left-arm locking
-            if (!buttonPressed && leftButtonValue >= minButtonForce)
-            {
-                buttonPressed = true;
-                Debug.Log("Yolo left");
-                var cmd = new LEGOTachoMotorCommon.DriftCommand();
-                cmd.ExecuteImmediately = true;
-                leftLever.SendCommand(cmd);
-            }
-            else if (buttonPressed && leftButtonValue < minButtonForce)
-            {
-                buttonPressed = false;
-                Debug.Log("Yolo left end");
-                var cmd = new LEGOTachoMotorCommon.SetSpeedPositionCommand()
+                    leftLeverValue = leftLeverUpright;
+                }
+
+                //Steering wheel unlocking
+                if (steeringWheelLocked && steeringWheel != null)
                 {
-                    Position = leftLeverValue,
-                    Speed = 4
-                };
-                cmd.ExecuteImmediately = true;
-                leftLever.SendCommand(cmd);
+                    steeringWheelLocked = false;
+                    Debug.Log("Locking Steering wheel");
+                    var cmd = new LEGOTachoMotorCommon.SetSpeedPositionCommand()
+                    {
+                        Position = 0,
+                        Speed = 20
+                    };
+                    cmd.SetEndState(MotorWithTachoEndState.Drifting);
+                    cmd.ExecuteImmediately = true;
+                    steeringWheel.SendCommand(cmd);
+                }
+
+                //right lever unlocking
+                if (!rightButtonPressed && rightButtonValue >= minButtonForce)
+                {
+                    rightButtonPressed = true;
+                    Debug.Log("Yolo right");
+                    var cmd = new LEGOTachoMotorCommon.DriftCommand();
+                    cmd.ExecuteImmediately = true;
+                    rightLever.SendCommand(cmd);
+                }
+                //right lever locking
+                else if (rightButtonPressed && rightButtonValue < minButtonForce)
+                {
+                    rightButtonPressed = false;
+                    Debug.Log("Yolo right end");
+                    var cmd = new LEGOTachoMotorCommon.SetSpeedPositionCommand()
+                    {
+                        Position = rightLeverValue,
+                        Speed = 3
+                    };
+                    cmd.SetEndState(MotorWithTachoEndState.Holding);
+                    cmd.ExecuteImmediately = true;
+                    rightLever.SendCommand(cmd);
+                }
+                //left lever unlocking
+                if (!leftButtonPressed && leftButtonValue >= minButtonForce)
+                {
+                    leftButtonPressed = true;
+                    Debug.Log("Yolo right");
+                    var cmd = new LEGOTachoMotorCommon.DriftCommand();
+                    cmd.ExecuteImmediately = true;
+                    leftLever.SendCommand(cmd);
+                }
+                //left lever locking
+                else if (leftButtonPressed && leftButtonValue < minButtonForce)
+                {
+                    leftButtonPressed = false;
+                    Debug.Log("Yolo right end");
+                    var cmd = new LEGOTachoMotorCommon.SetSpeedPositionCommand()
+                    {
+                        Position = leftLeverValue,
+                        Speed = 3
+                    };
+                    cmd.SetEndState(MotorWithTachoEndState.Holding);
+                    cmd.ExecuteImmediately = true;
+                    leftLever.SendCommand(cmd);
+                }
+
             }
+            else if (gameMode == GAMEMODES.MINIFIG)
+            {
+                //steering wheel locking
+                if (!steeringWheelLocked && steeringWheel != null)
+                {
+                    steeringWheelLocked = true;
+                    Debug.Log("Locking Steering wheel");
+                    var cmd = new LEGOTachoMotorCommon.SetSpeedPositionCommand()
+                    {
+                        Position = 0,
+                        Speed = 20
+                    };
+                    cmd.SetEndState(MotorWithTachoEndState.Holding);
+                    cmd.ExecuteImmediately = true;
+                    steeringWheel.SendCommand(cmd);
 
-
+                    LeverReset();
+                }
+            }
         }
-        else if(gameMode == GAMEMODES.MINIFIG)
-        {
+    }
 
-        }
-        else if(gameMode == GAMEMODES.TRASHGRAB)
-        {
+    public int GetLeftLeverValue()
+    {
+        return leftLeverValue - leftLeverUpright;
+    }
 
-        }
-        */
+    public int GetRightLeverValue()
+    {
+        return rightLeverValue - rightLeverUpright;
+    }
+
+    public int GetSteeringWheelValue()
+    {
+        return steeringWheelValue;
     }
 
     public void RightLeverReset()
@@ -340,6 +347,7 @@ public class LegoController : MonoBehaviour, ILEGOGeneralServiceDelegate
             Debug.LogFormat("Has motor service {0}", steeringWheel);
             steeringWheel.UpdateInputFormat(new LEGOInputFormat(steeringWheel.ConnectInfo.PortID, steeringWheel.ioType, steeringWheel.PositionModeNo, 1, LEGOInputFormat.InputFormatUnit.LEInputFormatUnitRaw, true));
             steeringWheel.RegisterDelegate(this);
+            frontInited = true;
 
             /*
              * var cmd = new LEGOTachoMotorCommon.SetSpeedPositionCommand()
@@ -423,6 +431,7 @@ public class LegoController : MonoBehaviour, ILEGOGeneralServiceDelegate
             int mode = 0;
             rightButton.UpdateInputFormat(new LEGOInputFormat(rightButton.ConnectInfo.PortID, rightButton.ioType, mode, 1, LEGOInputFormat.InputFormatUnit.LEInputFormatUnitRaw, true));
             rightButton.RegisterDelegate(this);
+            backInited = true;
         }
 
     }

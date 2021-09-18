@@ -9,6 +9,7 @@ public class DriveSubmarineConsole : MonoBehaviour
 
     public Player player;
     public Submarine submarine;
+    public LegoController legoController;
 
     // Start is called before the first frame update
     void Start()
@@ -35,6 +36,7 @@ public class DriveSubmarineConsole : MonoBehaviour
             {
                 player.UnFreezePlayer();
                 player.currentState = Player.PlayerState.walkingMode;
+                legoController.gameMode = GAMEMODES.MINIFIG;
                 Camera._instance.ChangeCameraMode(Camera.CameraMode.playerMode);
             }
         }
@@ -43,32 +45,12 @@ public class DriveSubmarineConsole : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (player.currentState == Player.PlayerState.drivingMode) {
-
-            if (Input.GetKey(KeyCode.W))
-            {
-                submarine.AddForce(transform.forward * speed);
-            }
-            else if (Input.GetKey(KeyCode.S))
-            {
-                submarine.AddForce(-transform.forward * speed);
-            }
-            if (Input.GetKey(KeyCode.A))
-            {
-                submarine.AddTorque(-transform.up * speed);
-            }
-            else if (Input.GetKey(KeyCode.D))
-            {
-                submarine.AddTorque(transform.up * speed);
-            }
-            if (Input.GetKey(KeyCode.Q)) {
-                submarine.AddForce(transform.up * speed);
-            }
-            else if (Input.GetKey(KeyCode.Z))
-            {
-                submarine.AddForce(-transform.up * speed);
-            }
-
+        if (player.currentState == Player.PlayerState.drivingMode)
+        {
+            legoController.gameMode = GAMEMODES.SUBMARINE;
+            submarine.AddForce(transform.forward * speed * legoController.GetRightLeverValue());
+            submarine.AddTorque(transform.up * speed * legoController.steeringWheelValue);
+            submarine.AddForce(transform.up * speed * legoController.GetLeftLeverValue());
         }
     }
 }
