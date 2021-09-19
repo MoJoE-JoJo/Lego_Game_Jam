@@ -63,11 +63,22 @@ public class LegoController : MonoBehaviour, ILEGOGeneralServiceDelegate
 
     public float endScore = 0;
 
+    private static LegoController lcInstance;
+
 
     // Start is called before the first frame update
     void Start()
     {
         DontDestroyOnLoad(gameObject);
+        if (lcInstance == null)
+        {
+            lcInstance = this;
+        }
+        else
+        {
+            DestroyObject(gameObject);
+        }
+
         frontDeviceHandler.OnDeviceInitialized += OnFrontDeviceInitialized;
         backDeviceHandler.OnDeviceInitialized += OnBackDeviceInitialized;
 
