@@ -10,7 +10,7 @@ public class TrashPicker : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        legoController = GameObject.FindGameObjectWithTag("LegoController").GetComponent<LegoController>();
     }
 
     // Update is called once per frame
